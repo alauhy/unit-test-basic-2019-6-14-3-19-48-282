@@ -15,19 +15,19 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 class ExpenseServiceTest {
     @Test
     void should_return_internal_expense_type_if_project_is_internal() throws UnexpectedProjectTypeException {
-        // given
-        Project project = new Project(ProjectType.INTERNAL,"project1");
-        // when
-        // then
-        ExpenseType expenseType=ExpenseService.getExpenseCodeByProjectTypeAndName(project);
-        assertSame(ExpenseType.INTERNAL_PROJECT_EXPENSE,expenseType);
+
+        Project project = new Project(ProjectType.INTERNAL, "project1");
+
+
+        assertSame(ExpenseType.INTERNAL_PROJECT_EXPENSE, ExpenseService.getExpenseCodeByProjectTypeAndName(project));
     }
 
     @Test
     void should_return_expense_type_A_if_project_is_external_and_name_is_project_A() throws UnexpectedProjectTypeException {
-        // given
-        // when
-        // then
+
+        Project project = new Project(ProjectType.EXTERNAL, "Project A");
+
+        assertSame(ExpenseType.EXPENSE_TYPE_A, ExpenseService.getExpenseCodeByProjectTypeAndName(project));
     }
 
     @Test
