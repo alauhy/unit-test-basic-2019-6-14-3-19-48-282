@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ExpenseServiceTest {
     @Test
@@ -39,9 +40,9 @@ class ExpenseServiceTest {
 
     @Test
     void should_return_other_expense_type_if_project_is_external_and_has_other_name() throws UnexpectedProjectTypeException {
-        // given
-        // when
-        // then
+        Project project = new Project(ProjectType.EXTERNAL, "Project C");
+
+        assertSame(ExpenseType.OTHER_EXPENSE,ExpenseService.getExpenseCodeByProjectTypeAndName(project));
     }
 
     @Test
